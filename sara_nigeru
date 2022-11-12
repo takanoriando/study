@@ -1,0 +1,325 @@
+import random
+
+def hai_iie():
+    """
+ 　 このファンクションは、ユーザーに答えを求める。もし「はい」ならTrue、「いいえ」ならFalse 
+ 　 それ以外は「None」つまり「無」あるいは「該当外」と見なし、リターンする。
+    """
+    answer = input()
+    if answer == "はい":
+        return True
+    elif answer =="いいえ":
+        return False
+    else:
+        return None
+
+        
+def ikkaime_sentakusi():
+    """
+    選択肢一回目。
+    
+ 　 このファンクションは、ユーザーに答えを求める。もし「階段」ならTrue、「廊下」「中庭」ならFalse 
+ 　 それ以外は「None」つまり「無」あるいは「該当外」と見なし、リターンする。
+    """
+    answer = input()
+    if answer == "階段":
+        return True
+    elif answer in ["廊下","中庭"]:
+        return False
+    else:
+        return None
+        
+def nikaime_sentakusi():
+    """
+    選択肢二回目。
+    
+    上に同じ。
+    """
+    answer = input()
+    if answer == "東の塔":
+        return True
+    elif answer in ["大広間","大回廊"]:
+        return False
+    else:
+        return None   
+        
+def sankaime_sentakusi():
+    """
+    選択肢三回目。
+    
+    上に同じ。
+    """
+    answer = input()
+    if answer == "はしご":
+        return True
+    elif answer in ["東の聖花庭園","本丸ホールエントランス"]:
+        return False
+    else:
+        return None                       
+
+def sara_nigeru():
+    print("『王様への献上品を届けるためお城を訪れると女の子に話しかけられた』\nあら、見ない顔ね！　あなた名前は？\n")
+    namae = input()
+    
+    if namae == "ユウト":
+        print("……う、うそでしょ？　いつから変装の名人になったの？\nまあ、そんなことはいいわ。いつものように城から私を逃がしてくれる？　私の大事な執事さん?")
+
+    else:
+        print("\n\n"+namae + "。そう……ちょうどいいわ。私、この国の姫なのだけれど……城から私を逃がしてくれる？\n（※「はい」か「いいえ」でこたえてね！）")
+
+    
+    if random.randint(1, 3) == 1:
+        print("\n助けて……くれるわよね？”)
+
+    # ここから僕のコード
+    loop = True
+    game_over = 0
+    while loop:
+        answer = hai_iie()
+    
+        if answer is True: # ここは「if answer == True」と同じ意味
+            print("\nそうこなくちゃ。じゃあ、まずは……\n")
+            loop = False
+            tsuzuki(namae)      # ここで続く
+        elif answer is False and game_over == 0:
+            print("\nど、どうしてよ！　お願い……助けてよ")
+            game_over = game_over + 1
+        elif answer is False and game_over >= 1:
+            print("\n……そう！　じゃあ、いいわ。あなたの助けなんていらないから！\n誰を相手に意地悪したのか後悔させてあげる……！")
+            print("G A M E   O V E R")
+            loop = False
+        else:
+            print("男なら「はい」か「いいえ」で答えなさい！") # 「はい」「いいえ」以外
+
+
+def tsuzuki(namae):
+    if namae == "ユウト":
+        s="ユウトにはいらないかもだけど、一応、城内の説明をするわね。\nお城の中にはたくさんの衛兵がいて、常に私を勉強部屋に連れ戻そうと……\nこほん、警護のために常に私を監視しているわ。それをかいくぐって城外に出られたらこっちのものよ。\nもし、衛兵たちを突破出来たら、特別に"+namae+"にちょっとしたご褒美を贈呈します！\n\nどう？　理解できた……？\n"
+        print(s) 
+        loop = True
+        while loop:
+            answer = hai_iie()
+        
+    
+            if answer is True:
+                print("よかったわ。\n私、こんなこともあろうかと衛兵の配置図をメモしてたの。\n今の時間帯だとたまに衛兵がいなくなるところがあるのよ。\n配置図を渡すから、"+namae+"はそれを頼りに私を案内してね。\n")
+                loop = False
+                tsuzukini(namae)      # ここで続く
+            elif answer is False:
+                print("……仕方ないわね、もう一度言うからよく聞くのよ。\n")
+                tsuzuki(namae)
+         
+            else:
+                print("男なら「はい」か「いいえ」で答えなさい！") # 「はい」「いいえ」以外
+    
+    elif namae != "ユウト":
+        z="城内の説明をするわね。\nお城の中にはたくさんの衛兵がいて、常に私を勉強部屋に連れ戻そうと……\nこほん、警護のために常に私を監視しているわ。それをかいくぐって城外に出られたらこっちのものよ。\nもし、衛兵たちを突破出来たら、"+namae+"にちょっとしたご褒美を贈呈します！\n\nどう？　理解できた……？\n"
+        print(z)
+    
+        loop = True
+        while loop:
+            answer = hai_iie()
+    
+    
+            if answer is True:
+                print("よかったわ。\n私、こんなこともあろうかと衛兵の配置図をメモしてたの。\n今の時間帯だとたまに衛兵がいなくなるところがあるのよ。\n配置図を渡すから、"+namae+"はそれを頼りに私を案内してね。\n")
+                loop = False
+                tsuzukini(namae)      # ここで続く
+            elif answer is False:
+                print("……仕方ないわね、もう一度言うからよく聞くのよ。\n")
+                tsuzuki(namae)
+         
+            else:
+                print("男なら「はい」か「いいえ」で答えなさい！") # 「はい」「いいえ」以外
+            
+def tsuzukini(namae):
+     
+    print("『姫から手渡された配置図には衛兵の巡回ルートが書かれていた。\nそれによると、今衛兵がいない場所は……！』\n\n選択肢【階段】・【廊下】・【中庭】\n\n")
+    
+    loop = True
+    while loop:
+        answer = ikkaime_sentakusi()
+    
+    
+        if answer is True:
+            print("……いないみたいね。ふう、よかったわ。\n"+namae+"、なかなか冴えてるじゃない！　この調子で次も頼むわよ？\n")
+            loop = False
+            tsuzukisan(namae)      # ここで続く
+        elif answer is False:
+            print("姫様！ こんなところに！　ささ、早く自室にお戻りを！！\nあ、ちょっ、待って――!\nG A M E   O V E R")
+            loop = False
+            mouitido(namae)         
+        else:
+            print("男ならはっきり答えなさい！") # 「はい」「いいえ」以外
+            
+def tsuzukisan(namae):
+    print("『姫からお褒めの言葉をいただいた。さて、この次は……！』\n\n選択肢【大広間】・【大回廊】・【東の塔】\n\n")
+
+    loop = True
+    while loop:
+        answer = nikaime_sentakusi()
+    
+    
+        if answer is True:
+            print("\n……いないみたい！\nさすが"+namae+"！　すごいわ！　あと少しで城から出られるから期待してるわよ！\n")
+            loop = False
+            tsuzukiyon(namae)      # ここで続く
+        elif answer is False:
+            print("ああ、姫様！ こんなところにいらっしゃったのですか！　さあ、自室にお連れ致します！！\nあ、ま、待ちなさ――ちょっ、待って――!\nG A M E   O V E R")
+            loop = False
+            mouitidoni(namae)
+         
+        else:
+            print("男ならはっきり答えなさい！") # 「はい」「いいえ」以外
+            
+def tsuzukiyon(namae):            
+    print("『姫からまたまたお褒めの言葉をいただいた。この次で城から出られるぞ……！』\n\n選択肢【東の聖花庭園】・【はしご】・【本丸ホールエントランス】\n\n")
+ 
+    loop = True
+    while loop:
+        answer = sankaime_sentakusi()
+    
+    
+        if answer is True:
+            print("\n……いない！\nいないわよ、"+namae+"！！\n")
+            loop = False
+            if namae == "ユウト":
+                tokusyurasuto(namae)
+            elif namae != "ユウト":
+                rasuto(namae) # ここで続く
+        elif answer is False:
+            print("ああ、姫様！ こんなところにいらっしゃったのですか！　さあ、自室にお連れ致します！！\nあ、ま、待ちなさ――ちょっ、待って――!\nG A M E   O V E R")
+            loop = False
+            mouitidosan(namae)
+        else:
+            print("男ならはっきり答えなさい！") # 「はい」「いいえ」以外 
+ 
+def rasuto(namae):
+    s="ここまで案内してくれてありがとう！\nこれで勉強しなくて済むわ。あの家庭教師苦手なのよねえ。\nあ、そうだ。ご褒美をあげなくっちゃね！"
+    g="『姫はどこからかリボンのついた木の板を取り出した』"
+    k=namae+"、姫の騎士になれる名誉の勲章よ。後日、城に来なさい。我が親衛となれたこと末代まで誇るがいいわ！\n『姫から手製らしい勲章バッチを受け取った。平民から騎士に……巨万の富が僕を待っている！』"
+    print(s+"\n",g+"\n",k+"\n")
+    print("G A M E   C L E A R")
+    saisyokara()
+
+def tokusyurasuto(namae):
+    s="ユウト、ここまで案内してくれてありがとう！　いつも手を掛けさせてごめんね……？\nでも、これで勉強しなくて済むわ。あの家庭教師苦手なの。\nあ、そうだ。ご褒美をあげなくっちゃね！"
+    g="『サラは僕の前に躍り出ると、少し背伸びをして……』"
+    k="よしよし……。良い子良い子……。\n『僕の頭を優しく撫でてくれた。』\nまた、城に来なさい。そのとき……またご褒美をあげるわ。\n\nきて……くれるわよね？"
+    print(s+"\n",g+"\n",k+"\n")
+    loop = True
+    game_over = 0
+    while loop:
+        answer = hai_iie()
+    
+        if answer is True: # ここは「if answer == True」と同じ意味
+            print("\nえへへ……じゃあ、待ってるからね！\nG A M E   C L E A R")
+            loop = False
+            saisyokara()
+        elif answer is False:
+            print("\nえ。ど、どうして……？")
+            loop = False
+            tokusyurasutoni(namae)
+        else:
+            print("……あやふやな男の子は嫌いよ？") # 「はい」「いいえ」
+    
+def tokusyurasutoni(namae):
+    print("私のこと、きらい……？")
+    loop = True
+    game_over = 0
+    while loop:
+        answer = hai_iie()
+        
+        if answer is True:
+            print("\n……あっそう！　もうユウトなんて大嫌い！　べーだ！")
+            print("G A M E   O V E R")
+            loop = False
+            saisyokara()
+        elif answer is False:
+            print("なら、きてよ")
+            loop = False
+            tokusyurasutosan(namae)
+        else:
+            print("ねぇ、ちゃんと答えてよ。あやふやな男の子は嫌いよ……？") # 「はい」「いいえ」以外 
+
+def tokusyurasutosan(namae):
+    print("おねがい！")
+    loop = True
+    game_over = 0
+    while loop:
+        answer = hai_iie()
+        
+        if answer is True:
+            print("\nえへへ……。じゃあ、待ってるからね！")
+            print("G A M E   C L E A R")
+            loop = False
+            saisyokara()
+        elif answer is False:
+            print("\n……あっそう！　もうユウトなんて大嫌い！　べーだ！")
+            print("G A M E   O V E R")
+            loop = False
+            saisyokara()
+        else:
+            print("ねぇ、ちゃんと答えて。おねがいっ！") # 「はい」「いいえ」以外
+            
+def mouitido(namae):
+    print("もう一度あそびますか？")
+    loop = True
+    while loop:
+        answer = hai_iie()
+        
+        if answer is True:
+            loop = False
+            tsuzukini(namae)
+        elif answer is False:
+            print("G A M E   E N D")
+            loop = False
+        else:
+            print("「はい」か「いいえ」でお願いします。") # 「はい」「いいえ」以外
+            
+def mouitidoni(namae):
+    print("もう一度あそびますか？")
+    loop = True
+    while loop:
+        answer = hai_iie()
+        
+        if answer is True:
+            loop = False
+            tsuzukisan(namae)
+        elif answer is False:
+            print("G A M E   E N D")
+            loop = False
+        else:
+            print("「はい」か「いいえ」でお願いします。") # 「はい」「いいえ」以外  
+ 
+def mouitidosan(namae):
+    print("もう一度あそびますか？")
+    loop = True
+    while loop:
+        answer = hai_iie()
+        
+        if answer is True:
+            loop = False
+            tsuzukiyon(namae)
+        elif answer is False:
+            print("G A M E   E N D")
+            loop = False
+        else:
+            print("「はい」か「いいえ」でお願いします。") # 「はい」「いいえ」以外 
+            
+def saisyokara():
+    print("もう一度あそびますか？")
+    loop = True
+    while loop:
+        answer = hai_iie()
+        
+        if answer is True:
+            loop = False
+            sara_nigeru()
+        elif answer is False:
+            print("G A M E   E N D")
+            loop = False
+        else:
+            print("「はい」か「いいえ」でお願いします。") # 「はい」「いいえ」以外 
+            
+sara_nigeru()
