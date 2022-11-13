@@ -25,7 +25,6 @@ class Fraction():
                     print(a,b)
                 
             else:
-            # m を n で割った余りを新たに n とし、更に 元のnを新たにm とし 2. に戻る。
                 s = n
                 n = m % n
                 m = s
