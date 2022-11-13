@@ -1,0 +1,33 @@
+#　二時間くらい色々考えてみたのですが、うまくできなかったので、ひとまず約分のコードを作ってみようと思いました。
+#　これも上手くできなかった。コード難しい。 
+
+class Fraction():
+    def __init__(self, numerator, denominator):
+        self.numerator = numerator # 分子
+        self.denominator = denominator # 分母
+
+    # 約分に改変
+    def reduce(self):
+        self.numerator = n
+        self.denominator = m
+        
+        while True:
+            if n == 0:
+                return m
+                if m == 1:
+                    n = numerator
+                    m = denominator
+                    print(numerator,denominator)
+                    
+                else:
+                    a = numerator//m
+                    b = denominator//m
+                    print(a,b)
+                
+            else:
+            # m を n で割った余りを新たに n とし、更に 元のnを新たにm とし 2. に戻る。
+                s = n
+                n = m % n
+                m = s
+            
+Fraction(4, 48)
